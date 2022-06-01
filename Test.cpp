@@ -16,12 +16,49 @@ using namespace std;
 
 TEST_CASE("Test Team")
 {
-    CHECK(1 == 1);
+    Team t1("Napoli", 0.7);
+    Team t2("Palermo", 0.3);
+    Team t3("Parma", 0.1);
+    Team t4("Lazio", 0);
+    Team t5("Roma", 0.6);
+    Team t6("Empoli", 0.2);
+    Team t7("Sampdoria", 0.4);
+
+    CHECK_NOTHROW(Team("Napoli", 0.7));
+    CHECK_NOTHROW(Team("Palermo", 0.3));
+    CHECK_NOTHROW(Team("Parma", 0.1));
+    CHECK_NOTHROW(Team("Lazio", 0));
+    CHECK_NOTHROW(Team("Roma", 0.6));
+    CHECK_NOTHROW(Team("Empoli", 0.2));
+    CHECK_NOTHROW(Team("Sampdoria", 0.4));
+
+
+    // CHECK_THROWS(Team("", 0.4));
+    // CHECK_THROWS(Team("throws", 1.4));
+    // CHECK_THROWS(Team("throws", -0.2));
+
+    CHECK(t1.getName() == "Napoli");
+    CHECK(t2.getWins() == 0);
+    CHECK(t3.getTalent() == 0.1);
+    CHECK(t4.getLoses() == 0);
+    CHECK(t5.getHomeWins() == 0);
+    CHECK(t6.getGoalDiff() == 0);
+    CHECK(t7.getAwayWins() == 0);
 }
 
 TEST_CASE("Test Game")
 {
-    CHECK(1 == 1);
+    Team t1("Napoli", 0.7);
+    Team t2("Palermo", 0.3);
+    Team t3("Parma", 0.1);
+    Team t4("Lazio", 0);
+
+    int N = 1000;
+    for (int i = 0; i < N; i++)
+    {
+        CHECK_NOTHROW(Game(t1,t2));
+        CHECK_NOTHROW(Game(t3,t4));
+    }
 }
 
 TEST_CASE("Test League")
@@ -51,5 +88,4 @@ TEST_CASE("Test League")
 
 TEST_CASE("Test Schedule")
 {
-    CHECK(1 == 1);
 }
